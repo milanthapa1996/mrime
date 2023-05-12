@@ -23,7 +23,7 @@ const Results = () => {
               </label>
               <input
                 type="date"
-                className="px-8 bg-white border border-blue-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="px-8 bg-white border border-blue-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                 placeholder="Select date"
               />
             </div>
@@ -64,12 +64,12 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <NormalDistChart />
-          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <LineChart />
+            <NormalDistChart />
           </div>
+          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
+          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation
