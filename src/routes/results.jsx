@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "../layout";
 import Banner from "../assets/banner.png";
@@ -71,12 +71,12 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <NormalDistChart />
-          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <LineChart />
+            <NormalDistChart />
           </div>
+          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
+          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation
@@ -91,8 +91,8 @@ const Results = () => {
             <div className="flex-col items-center justify-between">
               <img
                 src={athlete.img_src}
-                alt="player-avatar"
-                className="h-14 w-14 rounded-full mb-3 shadow-md shadow-blue-400 bg-cover"
+                alt="avatar"
+                className="h-10 w-10 rounded-full shadow-md shadow-blue-400 bg-cover"
               />
               <h1 className="text-slate-800 text-lg mb-1">
                 {athlete.name} ( 35 Years )
