@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Layout from "../layout";
 import Banner from "../assets/banner.png";
 import NormalDistChart from "../components/charts/NormalDistChart";
-import LineChart from "../components/charts/LineChart";
+// import LineChart from "../components/charts/LineChart";
 
 const Results = () => {
   const location = useLocation();
