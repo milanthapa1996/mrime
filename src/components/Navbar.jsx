@@ -1,6 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo.png";
-import logoText from "../assets/logo_text.png";
+import Logo from "../assets/logo.svg";
 import Avatar from "../assets/profile.png";
 import { NavLink, Outlet } from "react-router-dom";
 const Navbar = () => {
@@ -9,7 +8,6 @@ const Navbar = () => {
       <nav className="p-3 bg-[#26719F] flex items-center justify-between">
         <div className="flex items-center justify-center">
           <img src={Logo} alt="logo" />
-          <img src={logoText} alt="logo-text" className="h-8 w-24 ml-2" />
         </div>
         <div>
           <ul className="space-x-10">

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "../layout";
 import Banner from "../assets/banner.png";
@@ -8,51 +8,58 @@ import LineChart from "../components/charts/LineChart";
 const Results = () => {
   const location = useLocation();
   const { athlete } = location.state;
+  const [date, setDate] = useState("2023-01-31");
+  const updateDateValue = (e) => {
+    const updatedValue = e.target.value;
+    setDate(updatedValue);
+  };
 
   return (
     <Layout>
       <main className="flex  flex-col-reverse md:flex-row justify-between my-10 gap-10">
         <div className="w-full md:w-[70%] flex-col space-y-8">
-          <div className="bg-white shadow-sm flex flex-col md:flex-row items-start md:items-center space-y-5 md:space-y-0 justify-between rounded-2xl p-8">
-            <div>
-              <label
-                htmlFor="report"
-                className="block mb-1 text-xs font-medium text-gray-900"
-              >
-                Select Date
-              </label>
-              <input
-                type="date"
-                className="px-8 bg-white border border-blue-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                placeholder="Select date"
-              />
+          <div className="flex justify-between items-end bg-[#ffffff] rounded-2xl p-[50px]">
+            <div className="flex flex-col md:flex-row justify-start items-center space-x-4 ">
+              <div>
+                <label for="select date" className="block heading-text mb-2">
+                  Select Date
+                </label>
+                <input
+                  type="date"
+                  className=" cursor-pointer smaller-text bg-[#ffffff] border-[1px] border-[#4EAEEA]  rounded-[10px]  w-[279px] h-[45px] p-2.5"
+                  onChange={(e) => updateDateValue(e)}
+                  value={date}
+                  required
+                ></input>
+              </div>
+              <div>
+                <label for="Report Type" className="block heading-text mb-2 ">
+                  Report Type
+                </label>
+                <select className="bg-[#ffffff] smaller-text border-[#4EAEEA] border-[1px] cursor-pointer rounded-[10px]  w-[279px] h-[45px] p-2.5 ">
+                  <option selected>Grey Matter Report</option>
+                  <option value="R1">Report Type1</option>
+                  <option value="R2">Report Type2</option>
+                  <option value="R3">Report Type3</option>
+                  <option value="R4">Report Type4</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label
-                htmlFor="report"
-                className="block mb-1 text-xs font-medium text-gray-900"
-              >
-                Report Type
-              </label>
-              <select
-                id="report-type"
-                className="px-8 bg-white border border-blue-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              >
-                <option value="gmr">Gray Matter Report</option>
-                <option value="rt2">Report Type 2</option>
-                <option value="rt3">Report Type 3</option>
-              </select>
+
+            <div className="bg-[#4eaeea] font-[600] cursor-pointer rounded-[20px] w-[192px] h-[44px] text-center text-[#ffffff] p-[8px] ml-4">
+              Generate
             </div>
-            <button className="bg-[#4EAEEA] px-10 py-2 rounded-full text-white">
-              generate
-            </button>
           </div>
           <div className="bg-white shadow-sm  rounded-2xl">
             <h1 className="text-slate-800 font-medium text-xl p-4">
               Grey Matters
             </h1>
             <div>
-              <img src={Banner} alt="banner-image" className="rounded-b-2xl h-44 w-full" />
+              <img
+                src={Banner}
+                alt="banner-image"
+                className="rounded-b-2xl h-44 w-full"
+              />
             </div>
           </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
@@ -85,7 +92,7 @@ const Results = () => {
               <img
                 src={athlete.img_src}
                 alt="player-avatar"
-                className="h-14 w-14 rounded-full mb-3 shadow-md shadow-blue-400"
+                className="h-14 w-14 rounded-full mb-3 shadow-md shadow-blue-400 bg-cover"
               />
               <h1 className="text-slate-800 text-lg mb-1">
                 {athlete.name} ( 35 Years )
