@@ -71,12 +71,12 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <NormalDistChart />
-          </div>
           {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <LineChart />
+            <NormalDistChart />
           </div> */}
+          <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
+          </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation
@@ -92,7 +92,7 @@ const Results = () => {
               <img
                 src={athlete.img_src}
                 alt="avatar"
-                className="h-10 w-10 rounded-full shadow-md shadow-blue-400 bg-cover"
+                className="h-10 w-10 rounded-full shadow-md shadow-blue-400 bg-cover mb-4"
               />
               <h1 className="text-slate-800 text-lg mb-1">
                 {athlete.name} ( 35 Years )

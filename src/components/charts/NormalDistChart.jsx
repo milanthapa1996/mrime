@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
-  BarElement,
   CategoryScale,
   LinearScale,
   Tooltip,
   Legend,
+  BarController,
+  BarElement,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+  BarController,
+  BarElement
+);
 
-export default function Charts() {
+export default function NormalDistChart() {
   const [chartData, setChartData] = useState({});
+
   const csvParser = (str, delimiter = ",") => {
     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -28,6 +37,7 @@ export default function Charts() {
     // return the array
     return arr;
   };
+
   useEffect(() => {
     fetch("/csv_file_2.csv")
       .then((response) => response.text())
@@ -46,7 +56,7 @@ export default function Charts() {
           ],
           datasets: [
             {
-              label: "Whole brain volume",
+              label: "Frequency",
               data: [
                 wholeBrainVolumeResult.filter(
                   (volumeVal) =>
@@ -83,9 +93,28 @@ export default function Charts() {
       });
   }, []);
 
-  const options = {};
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+        maxTicksLimit: 5,
+        title: {
+          display: true,
+          text: "Frequency",
+        },
+      },
+      x: {
+        title: {
+          display: true,
+          text: "Whole Brain Volume",
+        },
+      },
+    },
+  };
 
   return (
+    <>
+    <h2>Distribution Plot</h2>
     <div className="h-[478px] bg-[#ffffff] text-[#272727] rounded-[35px] flex items-center justify-center p-[21px]">
       {Object.keys(chartData).length && (
         <div className="h-full w-full">
@@ -93,5 +122,6 @@ export default function Charts() {
         </div>
       )}
     </div>
+    </>
   );
 }

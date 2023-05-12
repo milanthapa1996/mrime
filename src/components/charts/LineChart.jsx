@@ -21,7 +21,7 @@ ChartJS.register(
   LineElement
 );
 
-export default function NormalDistChart() {
+export default function LineChart() {
   const [chartData, setChartData] = useState({});
   const chartRef = useRef(null);
 
