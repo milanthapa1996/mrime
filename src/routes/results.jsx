@@ -2,11 +2,12 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "../layout";
 import Banner from "../assets/banner.png";
+import NormalDistChart from "../components/charts/NormalDistChart";
 
 const Results = () => {
   const location = useLocation();
   const { athlete } = location.state;
-  console.log(athlete.img_src);
+
   return (
     <Layout>
       <main className="flex  flex-col-reverse md:flex-row justify-between my-10 gap-10">
@@ -58,20 +59,19 @@ const Results = () => {
               Statistics
             </h1>
             <h2 className="text-slate-700">Volume: {athlete.volume}</h2>
-            <h2 className="text-slate-700">Noraml Range: {athlete.normalRange}</h2>
+            <h2 className="text-slate-700">
+              Noraml Range: {athlete.normalRange}
+            </h2>
           </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <h1 className="text-slate-800 font-medium text-lg mb-4">
-              Normal Distribution
-            </h1>
-            <div>Bell Curve CHart</div>
+            <NormalDistChart />
           </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation
             </h1>
             <h2 className="text-slate-700 text-justify">
-            {athlete.interpretation}
+              {athlete.interpretation}
             </h2>
           </div>
         </div>
