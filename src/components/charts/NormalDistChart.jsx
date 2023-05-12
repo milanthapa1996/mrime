@@ -54,7 +54,7 @@ export default function NormalDistChart() {
   return (
     <>
       <h2>Distribution Plot</h2>
-      <div className="h-[478px] bg-[#ffffff] text-[#272727] rounded-[35px] flex items-center justify-center p-[21px]">
+      <div className="h-[478px] bg-[#db3333] text-[#272727] rounded-[35px] flex items-center justify-center p-[21px]">
         {Object.keys(chartData).length && (
           <div className="h-full w-full">
             <Bar ref={chartRef} data={chartData} options={options} />

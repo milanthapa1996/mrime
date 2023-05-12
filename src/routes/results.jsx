@@ -64,12 +64,12 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <NormalDistChart />
-          </div>
           {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <LineChart />
+            <NormalDistChart />
           </div> */}
+          <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
+          </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation
