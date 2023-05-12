@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Layout from "../layout";
 import Banner from "../assets/banner.png";
 import NormalDistChart from "../components/charts/NormalDistChart";
+import LineChart from "../components/charts/LineChart";
 
 const Results = () => {
   const location = useLocation();
@@ -51,7 +52,7 @@ const Results = () => {
               Grey Matters
             </h1>
             <div>
-              <img src={Banner} alt="banner-image" className="rounded-b-2xl" />
+              <img src={Banner} alt="banner-image" className="rounded-b-2xl h-44 w-full" />
             </div>
           </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
@@ -63,8 +64,11 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          <div className="bg-white shadow-sm  rounded-2xl p-4">
+          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
             <NormalDistChart />
+          </div> */}
+          <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
           </div>
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">

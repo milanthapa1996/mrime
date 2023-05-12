@@ -1,43 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import Papa from "papaparse";
+import React, { useState, useEffect } from "react";
+import { csvToArray } from "../../utils/csvToArray";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-const NormalDistChart = () => {
-  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
+export default function NormalDistChart() {
+  const [chartData, setChartData] = useState({});
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://github.com/milanthapa1996/mrime/blob/master/src/assets/data/csv_file.csv");
-      const csvData = await response.text();
-
-      Papa.parse(csvData, {
-        complete: (result) => {
-          const { data } = result;
-          const labels = data.slice(1).map((entry) => entry[0]);
-          const dataset = {
-            label: "Whole Brain Volume",
-            data: data.slice(1).map((entry) => entry[1]),
-            fill: false,
-            borderColor: "rgba(54, 162, 235, 1)",
-          };
-
-          setChartData({ labels, datasets: [dataset] });
-        },
-        header: true,
+    fetch("/csv_file_2.csv")
+      .then((response) => response.text())
+      .then((data) => {
+        const benchmarkData = csvToArray(data);
+        const wholeBrainVolumeResult = benchmarkData.map(
+          (el) => el.wholebrainvolume
+        );
+        const dataForHistogram = {
+          labels: [
+            "0-1000000",
+            "1000001-1100000",
+            "1100001-1200000",
+            "1200001-1300000",
+            "1300001-1400000",
+          ],
+          datasets: [
+            {
+              label: "Whole brain volume",
+              data: [
+                wholeBrainVolumeResult.filter(
+                  (volumeVal) =>
+                    parseInt(volumeVal) >= 0 && parseInt(volumeVal) <= 1000000
+                ).length,
+                wholeBrainVolumeResult.filter(
+                  (volumeVal) =>
+                    parseInt(volumeVal) >= 1000001 &&
+                    parseInt(volumeVal) <= 1100000
+                ).length,
+                wholeBrainVolumeResult.filter(
+                  (volumeVal) =>
+                    parseInt(volumeVal) >= 1100001 &&
+                    parseInt(volumeVal) <= 1200000
+                ).length,
+                wholeBrainVolumeResult.filter(
+                  (volumeVal) =>
+                    parseInt(volumeVal) >= 1200001 &&
+                    parseInt(volumeVal) <= 1300000
+                ).length,
+                wholeBrainVolumeResult.filter(
+                  (volumeVal) =>
+                    parseInt(volumeVal) >= 1300001 &&
+                    parseInt(volumeVal) <= 1400000
+                ).length,
+              ],
+              backgroundColor: "#4eaeea",
+              borderColor: "#272727",
+              borderWidth: 1,
+            },
+          ],
+        };
+        setChartData(dataForHistogram);
       });
-    };
-
-    fetchData();
   }, []);
 
+  const options = {};
+
   return (
-    <div>
-      <h2 className="text-slate-800 font-medium text-lg mb-4">
-        Normal Distribution - Whole Brain Volume
-      </h2>
-      <Line data={chartData} />
+    <div className="h-[478px] bg-[#ffffff] text-[#272727] rounded-[35px] flex items-center justify-center p-[21px]">
+      {Object.keys(chartData).length && (
+        <div className="h-full w-full">
+          <Bar data={chartData} options={options} />
+        </div>
+      )}
     </div>
   );
-};
-
-export default NormalDistChart;
+}
