@@ -67,13 +67,15 @@ export default function LineChart() {
         };
         setChartData(dataForLineChart);
 
-        const newChart = new ChartJS(chartRef.current, {
-          type: "line",
-          data: dataForLineChart,
-          options: options,
-        });
+        if (chartRef.current) {
+          const newChart = new ChartJS(chartRef.current, {
+            type: "line",
+            data: dataForLineChart,
+            options: options,
+          });
 
-        chartRef.current = newChart;
+          chartRef.current = newChart;
+        }
       });
   }, []);
 
@@ -85,7 +87,7 @@ export default function LineChart() {
       <div className="h-[478px] bg-[#ffffff] text-[#272727] rounded-[35px] flex items-center justify-center p-[21px]">
         {Object.keys(chartData).length && (
           <div className="h-full w-full">
-            <canvas ref={chartRef} />
+            {chartData && <canvas ref={chartRef} />}
           </div>
         )}
       </div>

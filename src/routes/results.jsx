@@ -21,7 +21,7 @@ const Results = () => {
           <div className="flex justify-between items-end bg-[#ffffff] rounded-2xl p-[50px]">
             <div className="flex flex-col md:flex-row justify-start items-center space-x-4 ">
               <div>
-                <label for="select date" className="block heading-text mb-2">
+                <label htmlFor="select date" className="block heading-text mb-2">
                   Select Date
                 </label>
                 <input
@@ -33,11 +33,11 @@ const Results = () => {
                 ></input>
               </div>
               <div>
-                <label for="Report Type" className="block heading-text mb-2 ">
+                <label htmlFor="Report Type" className="block heading-text mb-2 ">
                   Report Type
                 </label>
                 <select className="bg-[#ffffff] smaller-text border-[#4EAEEA] border-[1px] cursor-pointer rounded-[10px]  w-[279px] h-[45px] p-2.5 ">
-                  <option selected>Grey Matter Report</option>
+                  <option value="">Grey Matter Report</option>
                   <option value="R1">Report Type1</option>
                   <option value="R2">Report Type2</option>
                   <option value="R3">Report Type3</option>
@@ -71,12 +71,12 @@ const Results = () => {
               Noraml Range: {athlete.normalRange}
             </h2>
           </div>
-          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <NormalDistChart />
-          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
-            <LineChart />
+            <NormalDistChart />
           </div>
+          {/* <div className="bg-white shadow-sm  rounded-2xl p-4">
+            <LineChart />
+          </div> */}
           <div className="bg-white shadow-sm  rounded-2xl p-4">
             <h1 className="text-slate-800 font-medium text-lg mb-4">
               Interpretation

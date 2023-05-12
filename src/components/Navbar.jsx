@@ -11,11 +11,11 @@ const Navbar = () => {
         </div>
         <div>
           <ul className="space-x-10">
-            <li className="inline-block text-white text-lg font-medium cursor-pointer hover:bg-gray-200 rounded-lg hover:text-[#26719F] ">
+            <li className="inline-block text-white text-lg font-medium cursor-pointer hover:bg-gray-200 p-1 rounded-lg hover:text-[#26719F] ">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "bg-gray-200 p-2 text-lg rounded-lg text-[#26719F]" : ""
+                  isActive ? "border-b-2 pb-1" : ""
                 }
               >
                 Dashboard
